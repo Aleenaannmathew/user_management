@@ -1,0 +1,77 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Website With Login & Registration | Aleena</title>
+    <!--Bootstrap link css-->
+    <link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!--signup form-->
+    <div class="container">
+        <form method="post" class="form-group" action="">
+            {% csrf_token %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+
+            
+            <div class="mb-3 bg p-5 rounded">
+                <h2 class="text-center">SignUp</h2>
+
+                <label for="username" class="form-label mt-4 fw-semibold">Username </label>
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <input type="text" class="form-control" id="username" name="username" placeholder="username" />
+
+                <label for="email" class="form-label mt-4 fw-semibold">Email </label>
+                <span class="icon"><ion-icon name="mail-sharp"></ion-icon>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="email" />
+
+                    <label for="password" class="form-label mt-3 fw-semibold">Password</label>
+                    <ion-icon name="lock-closed"></ion-icon>
+                    <input type="password" required class="form-control" id="password" name="password"
+                        placeholder="password" />
+
+                    <label for="password2" class="form-label mt-3 fw-semibold">Confirm Password</label>
+                    <ion-icon name="lock-closed"></ion-icon>
+                    <input type="password" required class="form-control" id="password" name="password1"
+                        placeholder="password" />
+
+                    <br>
+                    <button type="submit" class="btn">Sign Up</button>
+                    <p>i already have an account?<a href="{% url 'login'%}" class="register-link">Login</a></p>
+
+                    <!-- {% for message in messages %}
+                    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                        <strong></strong>{{message}}
+                         {% comment %} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>{% endcomment %} -->
+                    <!-- {% endfor %} -->
+
+            </div>
+
+
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+
+        </form>
+    </div>
+
+
+    <!--Bootstrap link js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
